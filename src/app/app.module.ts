@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -23,6 +23,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BookListCardComponent } from './components/book-list-card/book-list-card.component';
 import { BookListGridComponent } from './components/book-list-grid/book-list-grid.component';
 import { SpinnerOverlayComponent } from './Shared/Components/spinner-overlay/spinner-overlay.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,12 @@ import { SpinnerOverlayComponent } from './Shared/Components/spinner-overlay/spi
     MatTooltipModule,
     MatTabsModule,
     MatExpansionModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: !isDevMode(),
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],
