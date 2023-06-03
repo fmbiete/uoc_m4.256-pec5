@@ -1,5 +1,45 @@
 <div class="container">
   <h1>{{ book?.title }}</h1>
   <button mat-raised-button color="accent" (click)="goList()">Go Back</button>
-  <button mat-raised-button color="primary">Show Details</button>
+  <button mat-raised-button color="primary" (click)="showDetails()">Show Details</button>
+  <mat-divider></mat-divider>
+  <div class="details" *ngIf="visibleDetails">
+    <img src="{{ coverUrl }}" alt="{{ book?.title }}">
+    <h2>Summary</h2>
+    <p>{{ book?.description }}</p>
+    <h2>Publication Date</h2>
+    <p>{{ book?.first_publish_date }}</p>
+    <h2>Subjects</h2>
+    <p>{{ book?.subjects?.join(", ") }}</p>
+    <h2>Authors</h2>
+    <mat-tab-group>
+      <mat-tab *ngFor="let author of book?.AuthorsDetails" label="{{ author.name }}">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>Biography</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <p>{{ author.bio }}</p>
+          </mat-card-content>
+        </mat-card>
+        <mat-divider></mat-divider>
+
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Other books by the same author
+            </mat-panel-title>
+            <mat-panel-description>
+              Click to show book list
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <p>The API returns a list of ISBN numbers, we should need to call another API in a loop to get the titles. I
+            won't do this part.</p>
+          <ul class="unstyled-list">
+            <li *ngFor="let ref of author.source_records">{{ ref }}</li>
+          </ul>
+        </mat-expansion-panel>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
 </div>
