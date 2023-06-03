@@ -1,0 +1,13 @@
+@use 'sass:color';
+
+.mat-mdc-header-row {
+  background-color: color.adjust(#ffd700, $lightness: 20%, $alpha: -0.4);
+}
+
+.mat-mdc-row .mat-mdc-cell {
+  cursor: pointer;
+}
+
+.mat-mdc-row:hover .mat-mdc-cell {
+  background-color: color.adjust(#ffd700, $lightness: 10%, $alpha: 0.8);
+}

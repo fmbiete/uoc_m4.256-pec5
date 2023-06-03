@@ -1,0 +1,18 @@
+<div class="container">
+  <h1>Books</h1>
+  <mat-button-toggle-group #group="matButtonToggleGroup" class="display">
+    <mat-button-toggle value="list" aria-label="Show as List" matTooltip="Show as List"
+      (change)="changeDisplay($event.value)" checked>
+      <mat-icon>view_list</mat-icon>
+    </mat-button-toggle>
+    <mat-button-toggle value="table" aria-label="Show as Table" matTooltip="Show as Table"
+      (change)="changeDisplay($event.value)">
+      <mat-icon>table_view</mat-icon>
+    </mat-button-toggle>
+  </mat-button-toggle-group>
+
+  <mat-divider></mat-divider>
+
+  <app-book-list-card *ngIf="displayMode == 'list'" [books]="books"></app-book-list-card>
+  <app-book-list-grid *ngIf="displayMode == 'table'" [books]="books"></app-book-list-grid>
+</div>

@@ -1,0 +1,26 @@
+<ul [@listAnimation]="books.length" class="unstyled-list">
+  <li *ngFor="let book of books">
+    <mat-card [routerLink]="['/book', book.key.toString().split('/')[2]]" class="card">
+      <mat-card-header>
+        <mat-card-title>{{ book.title }}</mat-card-title>
+        <mat-card-subtitle>Authors: {{ book.author_name?.join(', ') }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-list class="inline-list">
+          <mat-list-item>
+            <span matListItemTitle>Year</span>
+            <span matListItemLine>{{ book.first_publish_year }}</span>
+          </mat-list-item>
+          <mat-list-item>
+            <span matListItemTitle>Publisher</span>
+            <span matListItemLine>{{ book.publisher?.join(', ') }}</span>
+          </mat-list-item>
+          <mat-list-item>
+            <span matListItemTitle>Language</span>
+            <span matListItemLine>{{ book.language?.join(', ') }}</span>
+          </mat-list-item>
+        </mat-list>
+      </mat-card-content>
+    </mat-card>
+  </li>
+</ul>

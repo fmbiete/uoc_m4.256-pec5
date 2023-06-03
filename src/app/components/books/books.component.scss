@@ -1,0 +1,14 @@
+.container {
+  margin: 20px 20px 0 20px;
+
+  h1 {
+    text-align: center;
+  }
+
+  .display {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    border: none;
+  }
+}

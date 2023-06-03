@@ -1,0 +1,34 @@
+@use 'sass:color';
+
+.unstyled-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.inline-list {
+  display: flex;
+}
+
+.card {
+  cursor: pointer;
+  margin-bottom: 10px;
+
+  .mat-mdc-card-header {
+    background-color: color.adjust(#ffd700, $lightness: 20%, $alpha: -0.4);
+    padding-bottom: 10px;
+  }
+  
+  .mat-mdc-card-content {
+    padding: 0;
+    margin: 0;
+  
+    &:last-child {
+      padding: 0;
+    }
+
+    .mat-mdc-list-item {
+      cursor: pointer;
+    }
+  }  
+}
